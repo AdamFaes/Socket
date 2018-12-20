@@ -9,9 +9,11 @@ sock.sendto(MESSAGE.encode(), (UDP_IP, UDP_PORT))
 data,addr = sock.recvfrom(1024)
 print("",data) 
 
-code = "0011277"
+code = 0
+code =(((data[0]))|(data[1]<<8))|((data[2]<<16)|(data[3]<<24))
+
 print("",code)
     
-sock.sendto(code.encode(), (UDP_IP, UDP_PORT))
+sock.sendto(str(code).encode(), (UDP_IP, UDP_PORT))
 data,addr = sock.recvfrom(1024)
 print("",data) 
